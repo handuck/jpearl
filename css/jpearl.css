@@ -1,0 +1,3066 @@
+@charset "UTF-8";
+
+:root {
+	--list-active-background-color: #cfe8e6;
+	--list-hover-background-color:#e2e2e2;
+	--list-selected-background-color: #cfe8e6;
+}
+
+
+body {
+	font-size: 15px;
+	margin: 0px;
+	padding: 0px;
+}
+
+* {
+	font-family: 'Malgun Gothic', sans-serif;
+}
+
+.notselectable {
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	-ms-user-select: none;
+}
+
+.jpview {
+	cursor: default;
+	position: relative;
+}
+
+select {
+	height: 36px;
+	min-width: 120px;
+	border: 1px solid rgb(146, 155, 167);
+	background-color: white;
+	font-size: 15px;
+}
+
+select:focus {
+	outline: none;
+	border: 1px solid rgb(29,80,162);
+}
+
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill,
+input:-webkit-autofill:hover, input:-webkit-autofill:active, input:-webkit-autofill:focus
+ {
+	background-color: #FFFFFF !important;	
+}
+
+textarea {
+	outline: none;
+	box-sizing: border-box;
+	padding: 10px;
+	font-size: 15px;
+	border: 1px solid lightgray;
+	border-radius: 5px;		
+}
+
+textarea:focus {
+	border: 1px solid rgb(29,80,162);
+}
+
+/***************************************************************************
+ * Tab view
+***************************************************************************/
+
+.jpview.tab.notselectable {
+	position: relative;
+	display: block;
+	cursor: default;
+	white-space: nowrap;
+	width: 100%;
+}
+
+.jpview.tab.horizontal.top {
+	display: table;
+	border-bottom: 1px solid lightgray;
+}
+
+.jpview.tab.horizontal.top .tabbars {
+	display: table-cell;	
+	vertical-align: bottom;
+}
+
+.jpview.tab.horizontal.top .tabbar {
+	display: inline-table;
+	margin-bottom: -1px;
+	padding: 5px 5px;
+	border: 1px solid lightgray;
+	border-radius: 3px 3px 0px 0px;
+	border-bottom: 1px solid transparent;
+	background-color: lightgray;
+	vertical-align: bottom;
+}
+
+/*
+.jpview.tab > .container {
+	display: table-cell;
+	position: relative;
+	text-align: left;
+	white-space: nowrap;
+	vertical-align: bottom;
+	margin: 0px;
+}
+*/
+
+.jpview.tab > .navbuttons {
+	position: absolute;
+	top: 0px;
+	right: 0%;
+}
+
+.jpview.tab .more {
+	display: inline-table;
+	background-color: gray;
+	color: white;
+	text-align: center;
+	font-size: 10pt;
+	padding: 8px 10px;
+	border-radius: 3px 3px 0px 0px;
+}
+
+.jpview.tab.vertical .tabbar {
+	display: block;
+}
+
+.jpview.tab.vertical.left  .tabbar {
+	display: block;
+	text-align: right;
+}
+
+
+.jpview.tab.vertical.left .tabbar {
+	border: 1px solid lightgray;
+	padding: 5px 5px; 
+	border-radius: 3px 0px 0px 3px;
+	background-color: lightgray;
+	vertical-align: bottom;
+}
+
+.jpview.tab .closeall.button {
+	display: table-cell;
+	cursor: pointer;
+	color: darkred;
+	font-weight: bold;
+	vertical-align: bottom;
+	text-align: right;
+}
+
+.jpview.tab .tabbar.popup .container,
+.jpview.tab .tabbar.hover,
+.jpview.tab .tabbar:hover {
+	background-color: lightblue !important;
+	border-bottom: 1px solid lightblue !important;
+}
+
+.jpview.tab.horizontal .tabbar.top.selected {
+	background-color: white;
+	border-bottom: 1px solid white;
+	height: 17px;
+}
+
+.jpview.tab.horizontal .tabbar.top > * {
+	display: table-cell;
+	vertical-align: bottom;
+}
+
+.jpview.tab .tabbar.dragging {
+	border: 1px solid transparent !important;
+	background-color: transparent !important;
+}
+
+.jpview.tab.horizontal.nomargin .tabbar.top.selected {
+	background-color: white;
+	border-bottom: 1px solid white;
+	height: 100%;
+}
+
+.jpview.tab.horizontal .tabbar.bottom.selected {
+	background-color: white;
+	border-top: 1px solid white;
+}
+
+.jpview.tab.vertical.left .tabbar {
+	padding: 10px;
+	border-top-left-radius: 30px;
+	border-bottom-left-radius: 30px;
+	text-align: right;
+}
+
+.jpview.tab.vertical .tabbar.left.selected {
+	background-color: white;
+	border-right: 1px solid white;
+	margin-left: auto;
+}
+
+.jpview.tab.tabbar .close {
+	font-weight: bold;	
+	font-family: arial;
+	text-align: right;
+	font-size: 12px;
+	padding: 5px;
+}
+
+.jpview.tab .tabbar .close:hover {
+	color: darkred;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.jpview.tab .tabbar .title {
+	max-width: 100px;
+	padding-left: 5px;
+	padding-right: 5px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+table.jpview.listview {
+	border-collapse: collapse;
+	table-layout: fixed;
+}
+
+.jpview.listview.tab {
+	width: 200px;	
+}
+
+.jpview.listview.tab .item > div {
+	padding: 3px;
+	width: 100%;
+}
+
+.jpview.listview.tab .item:hover {
+	background-color: var(--list-hover-background-color) !important;
+}
+
+.jpview.listview.tab .item:active {
+	background-color: var(--list-active-background-color);
+}
+
+
+
+/* Tabview nomargin */
+
+.jpview.tab.horizontal.nomargin {
+	background-color: #e1eaf8;
+	width: 100%;
+	border-top-left-radius: 10px; 
+	border-top-right-radius: 10px;
+}
+
+.jpview.tab.horizontal.nomargin .tabbar {
+	background-color: #e1eaf8;	
+	border-right: 0px solid transparent;	
+	border-bottom: 1px solid lightgray;	
+	padding: 10px 10px;
+}
+
+.jpview.tab.horizontal.nomargin .tabbar:nth-child(1) {
+	border-top-left-radius: 10px;
+}
+
+.jpview.tab.horizontal.nomargin .tabbar:last-child {
+	border-right: 1px solid lightgray;	
+}
+
+.jpview.tab.horizontal.nomargin .tabbar {
+	padding: 10px 10px;
+}
+
+.jpview.tab.horizontal.nomargin .tabbar.selected  {
+	background-color: white;
+	padding: 10px 10px;
+}
+
+/***************************************************************************
+ * Popover
+***************************************************************************/
+
+.jpview.popover {
+	position: absolute;
+	padding: 5px;
+	border: 3px solid white;
+	background-color: white;
+	box-shadow: 0px 0px 15px rgba(0,0,0,0.5);
+	border-radius: 10px;
+	display: none;
+	z-index: 100;
+}
+
+.jpview.popover .container {
+	overflow: auto;
+}
+
+.jpview.popover .arrowBottom {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	top: 100%;
+	left: 90px;	
+}
+
+.jpview.popover .arrowBottom:before {
+	position: absolute;
+	content: '';
+	width: 0px;
+	height: 0px;
+	top: 0px;
+	left: 0px;
+	border-top: 10px solid white;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+}
+
+/*
+.jpview.popover .arrowBottom:after {
+	position: absolute;
+	content: '';
+	width: 0px;
+	height: 0px;
+	top: 0px;
+	left: 10px;
+	border-top: 20px solid white;
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+}
+*/
+
+.jpview.popover .arrowTop {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	top: -10px;
+	left: 120px;	
+}
+
+.jpview.popover .arrowTop:before {
+	position: absolute;
+	content: '';
+	width: 0px;
+	height: 0px;
+	top: 0px;
+	left: 0px;
+	border-bottom: 10px solid white;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+}
+
+/*
+.jpview.popover .arrowTop:after {
+	position: absolute;
+	content: '';
+	width: 0px;
+	height: 0px;
+	top: 10px;
+	left: 10px;
+	border-bottom: 20px solid white;
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+}
+*/
+
+.jpview.popover .arrowLeft {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	left: -10px;
+	top: 220px;	
+}
+
+.jpview.popover .arrowLeft:before {
+	position: absolute;
+	content: '';
+	width: 0px;
+	height: 0px;
+	top: 0px;
+	left: 0px;
+	border-right: 10px solid white;
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+}
+
+/*
+.jpview.popover .arrowLeft:after {
+	position: absolute;
+	content: '';
+	width: 0px;
+	height: 0px;
+	top: 10px;
+	left: 10px;
+	border-right: 20px solid white;
+	border-top: 20px solid transparent;
+	border-bottom: 20px solid transparent;
+}
+*/
+
+.jpview.popover .arrowRight {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	left: 100%;
+	top: 120px;	
+}
+
+.jpview.popover .arrowRight:before {
+	position: absolute;
+	content: '';
+	width: 0px;
+	height: 0px;
+	top: 0px;
+	left: 0px;
+	border-left: 10px solid white;
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+}
+
+/*
+.jpview.popover .arrowRight:after {
+	position: absolute;
+	content: '';
+	width: 0px;
+	height: 0px;
+	top: 10px;
+	left: 0px;
+	border-left: 20px solid white;
+	border-top: 20px solid transparent;
+	border-bottom: 20px solid transparent;
+}
+*/
+
+/***************************************************************************
+ * ListBox
+***************************************************************************/
+
+/***************************************************************************
+ * TextBox
+***************************************************************************/
+
+.jpview.textbox {
+	border-radius: 5px;
+	display: table;
+	height: 36px;
+	border: 1px solid #7b7b7b;
+	background-color: white;
+	color: #393f48;
+	box-sizing: border-box;
+}
+
+.jpview.textbox.disabled {
+	color: #a1a3a5;
+	border: 1px solid rgb(146, 155, 167);
+	background-color: rgb(234, 234, 234);
+}
+
+.jpview.textbox.readonly {
+	border: 1px solid rgb(146, 155, 167);
+	background-color: rgb(245, 245, 245);
+}
+
+.jpview.textbox.focus {
+/*	box-shadow: 0px 0px 10px darkgreen; */
+	border: 1px solid rgb(29,80,162);
+}
+
+.jpview.textbox > .field {
+	display: table-cell;
+	outline: none;
+	border: 0px solid transparent; 
+	vertical-align: middle;
+	overflow: hidden;
+	background-color: transparent;
+	padding: 0px 10px;
+	height: 100%;
+	font-size: 15px;
+	letter-spacing: -0.5px;
+	color: inherit;
+	margin-right: auto;
+	box-sizing: border-box;
+}
+
+.jpview.textbox > input::-ms-clear {
+	display:none;
+}
+
+.jpview.textbox > input::-ms-reveal {
+	display:none;
+}
+
+input::placeholder,
+textarea::placeholder {
+	color: lightgray;
+}
+
+/***************************************************************************
+ * Textfield
+***************************************************************************/
+
+.jpview.textfield {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+}
+
+.jpview.textfield > * {
+	display: inline-block;
+	vertical-align: middle;
+	box-sizing: border-box;
+}
+
+.jpview.textfield > input {
+	width: 100%;
+	height: 36px;
+}
+
+.jpview.textfield > .pattern {
+	position: relative;
+}
+
+.jpview.textfield > .pattern > * {
+	display: inline-block;
+}
+
+.jpview.textfield > .pattern > input {
+	outline: none;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border: 0px solid transparent; 
+	vertical-align: middle;
+	overflow: hidden;
+	background-color: transparent;
+	letter-spacing: 5px;
+}
+
+.jpview.textfield > .pattern > .dash {
+	font-family: arial;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.jpview.input.error {
+	box-shadow: 0px 0px 10px tomato;
+}
+
+.jpview.textfield .front {
+	padding-left: 5px;
+	text-align: center;
+	vertical-align: middle;
+	width: 20px;
+}
+
+.jpview.textfield input.frontImage {
+	padding-left: 36px;
+	background-size: 20px;
+	background-position: 5px center;
+	background-repeat: no-repeat;
+}
+
+.jpview.textfield .rear {
+	width: 20px;
+}
+
+.jpview.textfield .clear {
+	color: #9b9b9b;
+	cursor: pointer;
+/*	
+	padding-right: 5px;
+	vertical-align: middle;
+	text-align: center;
+*/	
+	background-image: url(images/icon_input_clear.png);
+	background-size: 16px 16px;
+	background-position: center;
+	background-repeat: no-repeat;
+	width: 32px;
+	height: 32px;
+}
+
+.jpview.textfield.readonly .clear {
+    visibility: hidden;
+}
+
+.jpview.textfield.searchbox {
+	align-items: initial;
+}
+
+.jpview.textfield.searchbox .rear {
+	width: 34px;
+	background-color: #7b7b7b;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.jpview.textfield.searchbox .rear .icon {
+	background-image: url('images/icon_search.png');
+	background-size: 15.4px 15.4px;
+	background-position: center;
+	background-repeat: no-repeat;
+	width: 30px;
+	height: 100%;
+	vertical-align: middle;
+	float: right;
+	cursor: pointer;
+}
+
+.jpview.textfield.searchbox.focus .rear .icon {
+	background-image: url('images/icon_search_over.png');
+	background-size: 15.4px 15.4px;
+	background-position: center;
+	background-repeat: no-repeat;
+	width: 30px;
+	height: 100%;
+	vertical-align: middle;
+}
+
+.jpview.input.imagebox {
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+input[type="password"] {
+    -webkit-text-security: circle !important;
+	letter-spacing: 5px !important;
+	font-size: 1.5em !important;
+	speak: none;
+	font-family: verdana !important;
+ 	font-variant: normal;
+	text-transform: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.jpview.textfield.opened > .dropbox.listview {
+	display: block;
+	position: absolute !important;
+	top: 0px;
+	left: 0px;
+	z-index: 101;
+	width: 100%;
+	background-color: white;
+	border: 1px solid lightgray;
+}
+
+.jpview.textfield > .dropbox.listview {
+	display: none;
+}
+
+.jpview.textfield > .dropbox.listview  .item.selected {
+	background-color: var(--list-selected-background-color);
+}
+
+/***************************************************************************
+ * TextInput
+***************************************************************************/
+
+.jpview.textinput input::-ms-clear {
+	display:none;
+}
+
+.jpview.textinput input::-ms-reveal {
+	display:none;
+}
+
+.jpview.textinput {
+	display: inline-block;
+	position: relative;
+	box-sizing: border-box;
+}
+
+.jpview.textinput > * {
+	display: block;
+}
+
+.jpview.textinput > .inputbox {
+	position: relative;
+	width: 100%;
+	display: inline-flex;
+	align-items: center;
+	color: #393f48;
+	min-height: 36px;
+	box-sizing: border-box;
+	border-bottom: 1px solid lightgray;
+}
+
+
+.jpview.textinput.error {
+	box-shadow: none !important;
+}
+
+.jpview.textinput.error > .inputbox  {
+	border-bottom: 2px solid darkred;
+}
+
+
+.jpview.textinput.box > .inputbox {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	color: #393f48;
+	min-height: 36px;
+	box-sizing: border-box;
+	border: 1px solid lightgray;
+	width: 100%;
+}
+
+.jpview.textinput.box.error > .inputbox  {
+	box-shadow: -3px 2px 20px 0px tomato;
+}
+
+.jpview.textinput > .message {
+	padding-top: 5px;
+}
+
+
+.jpview.textinput > .inputbox > * {
+	display: inline-block;
+	vertical-align: middle;
+	box-sizing: border-box;
+}
+
+.jpview.textinput > .inputbox > .rear,
+.jpview.textinput > .inputbox > .front {
+	user-select: none;
+}
+
+.jpview.textinput.disabled > .inputbox {
+	color: #a1a3a5;
+	/*border: 1px solid rgb(146, 155, 167); */
+	background-color: rgb(234, 234, 234);
+}
+
+.jpview.textinput.readonly > .inputbox {
+	/* border: 1px solid rgb(146, 155, 167); */
+	background-color: rgb(245, 245, 245);
+}
+
+.jpview.textinput.focus  > .inputbox {
+	border-color: rgb(29,80,162);
+}
+
+.jpview.textfield > .inputbox > input {
+	width: 100%;
+	outline: none;
+	border: 0px solid transparent; 
+	vertical-align: middle;
+	overflow: hidden;
+	background-color: transparent;
+	padding: 0px 10px;
+	height: 100%;
+	font-size: 16px;
+	letter-spacing: -0.5px;
+	color: inherit;
+	margin-right: auto;
+	box-sizing: border-box;
+	background-color: transparent;
+	min-height: 24px;
+}
+
+.jpview.textfield.single > .inputbox > input {
+	text-align: right;
+}
+
+@keyframes textinputFrontImageAniAppear {
+	from {
+		background-position-y: 42px;
+	}
+	to {
+		background-position-y: 5px;
+	}
+}
+
+@keyframes textinputFrontImageAniDisappear {
+	from {
+		background-position-y: 5px;
+	}
+	to {
+		background-position-y: 42px;
+	}
+}
+
+.jpview.textinput > .inputbox > input.frontImage {
+	padding-left: 42px;	
+	animation-duration: 0.2s;
+	animation-name: textinputFrontImageAniDisappear;
+	animation-fill-mode: forwards;
+}
+
+.jpview.textinput.empty input.frontImage {
+	animation-duration: 0.2s;
+	animation-name: textinputFrontImageAniDisappear;
+	animation-fill-mode: forwards;
+}
+
+.jpview.textinput.single input.frontImage {
+	animation-name: textinputFrontImageAniAppear;
+	background-position-y: 5px;	
+}
+
+
+.jpview.textinput .label {
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 3px;
+	line-height: 36px;
+	transform: translate(0, 0);
+	transition: ease-out 0.2s transform;
+	color: gray;
+	user-select: none;
+}
+
+.jpview.textinput.box .label {
+	background-color: white;
+	padding: 0px 3px;
+}
+
+.jpview.textinput.single.hasIcon .label{
+	padding-left: 28px;	
+}
+
+.jpview.textinput.filled .label,
+.jpview.textinput.focus .label {
+	transform: translate(0, -14px);
+	font-size: 11px;
+	line-height: 11px !important;
+	height: 13px;
+}
+
+.jpview.textfield.single.filled .label,
+.jpview.textinput.single.focus .label {
+	transform: translate(0, 0px);
+	font-size: inherit;
+	line-height: 36px !important;
+	height: inherit;
+} 
+
+.jpview.textinput.filled input.frontImage,
+.jpview.textinput.focus input.frontImage {
+	animation-duration: 0.2s;
+	animation-name: textinputFrontImageAniAppear;
+	animation-fill-mode: forwards;
+}
+.jpview.textinput.box.filled .label,
+.jpview.textinput.box.focus .label {
+	transform: translate(0, -6px);
+}
+
+.jpview.textinput.required .label {
+	color: #222D49;
+}
+
+.jpview.textinput.required .label::before {
+	content: '❖';
+	color: #222D49;
+	font-weight: bold;
+	padding-right: 5px;
+}
+
+.jpview.textinput.error .label {
+	color: red;
+}
+
+.jpview.textinput.error .label::before {
+	content: '✻';
+	color: #ff1100;
+	font-weight: bold;
+	padding-right: 5px;
+}
+
+
+.jpview.textinput > .message {
+	display: none;
+}
+
+.jpview.textinput.error > .message {
+	color: darkred;
+	font-size: 0.9em;
+}
+
+.jpview.textinput.autocomplete .listview.dropbox .listbody .row.item {
+	transition: 0.1s ease-in transform;
+}
+
+.jpview.textinput.autocomplete .listview.dropbox .listbody .row.item.selected {
+	transform: scale(1.1);
+	border-radius: 5px;
+	filter: drop-shadow(2px 4px 6px black);
+}
+
+
+/***************************************************************************
+ * Spin
+***************************************************************************/
+
+/***************************************************************************
+ * Menu
+***************************************************************************/
+.jpview.menu {
+	position: relative;	
+	width: 100%;
+}
+
+.jpview.menu .menubar {
+	cursor: default;
+	width: 100%;
+}
+
+.jpview.menu .menuItem {
+	cursor: default;
+}
+
+.jpview.menu.horizontal .menubar {
+	display: table;
+	height: 100%;
+}
+
+.jpview.menu.horizontal .menuItem.top {
+	display: table-cell;
+	padding: 5px 10px 5px 10px;
+	color: white;
+	text-align: center;
+	vertical-align: middle;
+	height: 100%;
+}
+
+.jpview.menu .menuItem.top.selected {
+	background-color: darkred;	
+}
+
+.jpview.menu .submenu {
+	position: absolute;
+	padding: 5px;
+	display: block; 
+	border: 1px solid lightgray;
+	line-height: 2.5em;
+	color: black;
+	background-color: #eeeeee;
+}
+
+
+.jpview.menu.multicolumn .menuItem.node {
+	font-weight: bold;
+}
+
+.jpview.menu .menuItem.leaf.hover {
+	background: red;
+}
+
+.jpview.menu .menuItem.depth1 {
+	font-size: 11pt;	
+	font-weight: bold;
+	/*background-color: yellow;*/
+}
+
+.jpview.menu .menuItem.depth2 {
+	font-size: 10pt;	
+	/*background-color: lightblue;*/
+}
+
+.jpview.menu .menuItem.depth3,
+.jpview.menu .menuItem.depth4,
+.jpview.menu .menuItem.depth5
+{
+	font-size: 9pt;	
+}
+
+.jpview.menu.multicolumn .submenu.multicolumn .gap {
+	background-color: royalblue;
+}
+
+
+.jpview.menu.standard .menuItem {
+	font-size: inherit;
+	font-family: inherit;
+}
+
+.jpview.menu.standard .menuItem.hover {
+	background-color: lightblue;		
+}
+
+.jpview.menu.standard .menuItem .icon {
+	width: 12pt;	
+}
+
+.jpview.menu.standard .menuItem .indicator {
+	font-family: arial;
+}
+
+.jpview.menu.standard .submenu .menuItem.selected {
+	background-color: tomato;	
+	color: white;
+}
+
+/***************************************************************************
+ * Tree
+***************************************************************************/
+
+.jpview.tree {
+	cursor: default;
+	user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+}
+
+.jpview.tree div.item {
+	line-height: 25px;
+}
+
+.jpview.tree div.node {
+	display: block;
+}
+
+.jpview.tree div.node, .tree div.leaf {
+
+}
+
+.jpview.tree div.item > .content {
+	display: flex;
+}
+
+.jpview.tree div.item > .content > .pad {
+	display: inline-block;
+	height: 100%;
+/*	border-left: 1px solid green; */
+}
+
+.jpview.tree div.item .content > * {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.jpview.tree div.icon {
+	font-family: arial;
+	padding-right: 5px;
+}
+
+.jpview.tree div.subtree {
+	display: block;
+}
+
+.jpview.tree div.item:hover {
+	background:#F48C89;
+	color: white;	
+}
+
+.jpview.tree div.item.selected{
+	background:#351D1C;
+	color: white;
+}
+
+/***************************************************************************
+ * Path
+***************************************************************************/
+
+.jpview.path {
+	display: block;
+}
+
+.jpview.path > .pathnode {
+	display: inline-table;
+	padding: 2px;
+}
+
+.jpview.path > .pathnode > * {
+	display: table-cell;
+	padding: 5px;
+	border: 1px solid transparent;
+}
+
+.jpview.path > .pathnode.hover > .direction {
+	background-color: lightgray;
+	color: white;
+	border-radius: 5px;
+}	
+
+.jpview.path.disabled > .pathnode.hover > .direction {
+	background-color: transparent;
+	color: black;
+}	
+
+.jpview.path > .pathnode.open > .direction {
+	background-color: gray;
+	color: white;
+	border-radius: 5px;
+}
+
+.jpview.path > .pathnode.hover > .title {
+	font-weight: bold;
+	background-color: #fff360;
+}
+
+.jpview.path.disabled > .pathnode.hover > .title {
+	font-weight: normal;
+	background-color: transparent;
+}
+
+.jpview.path > .pathnode.open > .title {
+	font-weight: bold;
+	color: darkred;
+	background-color: #fff360;
+}
+
+.jpview.path > .pathnode > .direction {
+	font-family: arial;	
+	text-align: center;
+	font-size: 10px;
+	vertical-align: middle;
+}
+
+.jpview.listview.path .item > div {
+	padding: 3px;
+	width: 100%;
+}
+
+.jpview.listview.path .item:hover {
+	background-color: yellow;
+}
+
+.jpview.listview.path .item .selected {
+	font-weight: bold;
+	background-color: #eeffdd;
+}
+
+
+/***************************************************************************
+ * ContextMenu
+***************************************************************************/
+
+.jpview.contextmenu {
+	position: absolute !important;
+	border: 1px solid #BABABA;
+	border-radius: 5px;
+	background: #eeeeee;
+	box-shadow: 5px 5px 10px lightgray;
+	width: auto;
+}
+
+.jpview.contextmenu .menubar {
+	display: block;
+	cursor: default;
+}
+
+.jpview.contextmenu .menubar .menuItem {
+	padding: 5px 20px;
+	font-size: 10pt;
+	line-height: 1.5em;
+}
+
+.jpview.contextmenu .menubar .menuItem.disabled {
+	color: gray;
+}
+
+.jpview.contextmenu .menubar .menuItem.hover, 
+.jpview.contextmenu .menubar .menuItem:hover {
+	background-color: lightblue;
+}
+
+.jpview.contextmenu .menubar .menuItem.hover.disabled, 
+.jpview.contextmenu .menubar .menuItem.disabled:hover {
+	background-color: transparent;
+}
+
+/***************************************************************************
+ * Combobox
+***************************************************************************/
+
+.jpview.combobox
+{
+	display: inline-table;
+	align-items: center;
+	min-width: 120px;
+}
+
+.jpview.combobox > .arrow {
+	font-family: arial;
+	text-align: center;
+	width: 20px;
+	color: #7b7b7b;
+	padding-right: 5px;
+	user-select: none;
+}
+
+.jpview.combobox > .arrow.color {
+	width: 24px;
+	height: 24px;
+	border-radius: 5px;
+	border: 1px solid lightgray;
+}
+
+.jpview.combobox.disabled > .arrow {
+	color: #a1a3a5;
+}
+
+.jpview.combobox > .arrow.default {
+	background-image: url('images/combobox_arrow.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 20px;
+	width: 32px;
+	transition: 0.3s ease-out transform;
+}
+
+.jpview.combobox.opened > .arrow.default {
+	transform: scaleY(-1);
+}
+
+.jpview.combobox.cal> .arrow .icon,
+.jpview.combobox.cal.readonly > .arrow .icon {
+	background-image: url('images/icon_cal_dropbox_normal.png');
+	background-size: 28px 28px;
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 30px;
+	height: 100%;
+}
+
+.jpview.combobox.cal.focus > .arrow .icon {
+	background-image: url('images/icon_cal_dropbox_highlighted.png');
+}
+
+.jpview.combobox.cal.disabled > .arrow .icon {
+	background-image: url('images/icon_cal_dropbox_highlighted.png');
+}
+
+.jpview.combobox.opened {
+/*	box-shadow: 0px 0px 10px darkgreen; */
+	border: 1px solid rgb(29,80,162);
+}
+
+.jpview.combobox.opened > .arrow {
+	color: rgb(29,80,162);
+}
+
+.jpview.combobox > * {
+	display: table-cell;	
+	vertical-align: middle;
+}
+
+.jpview.combobox > input {
+	display: table-cell;
+	outline: none;
+	border: 0px solid transparent; 
+	vertical-align: middle;
+	overflow: hidden;
+	background-color: transparent;
+	min-width: 50px;
+	padding: 0px 10px;
+	height: 100%;
+	font-size: 16px;
+	color: inherit;
+	width: 100%;
+}
+
+.jpview.combobox > input::-ms-clear {
+	display:none;
+}
+
+.jpview.combobox > input::-ms-reveal {
+	display:none;
+}
+
+.jpview.combobox .listbody {
+	display: table;
+	width: 100%;
+}
+
+.jpview.combobox .listbody .item {
+	border-bottom: 0px solid transparent !important;
+}
+
+.jpview.combobox.dropbox {
+	position: absolute !important;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-top: 5px;
+	z-index: 101;
+	box-shadow: 0 0 6px rgba(0,0,0,0.16);
+}
+
+.jpview.combobox.dropbox.cal{
+	position: absolute !important;
+	border: 1px solid rgba(0,0,0,0.2);
+	padding-top: 5px;
+	padding-bottom: 0px;
+}
+
+.jpview.combobox.dropbox.cal .item .title {
+	font-size: 14px;
+}
+
+.jpview.combobox.dropbox.cal .item .row.week > *:first-child,
+.jpview.combobox.dropbox.cal .item .header.title > *:first-child {
+	padding-left: 6px;
+}
+
+.jpview.combobox.dropbox.cal .item .row.week > *:last-child,
+.jpview.combobox.dropbox.cal .item .header.title > *:last-child {
+	padding-right: 6px;
+}
+
+
+.jpview.combobox.dropbox.colorpicker {
+	padding: 0px;
+	margin-top: 5px;
+	border: 5px solid white;
+	border-radius: 5px;
+}
+
+.jpview.combobox.dropbox.cal > * {
+/*	border: 1px solid #929ba7; */	
+
+}
+
+.jpview.combobox.dropbox.listview .item > * {
+	padding: 5px;
+}
+
+.jpview.combobox.dropbox.listview > * {
+	border: 0px solid transparent !important;
+	width: calc(100% - 10px);
+	text-align: center;
+	margin: 0px 5px;
+	box-sizing: border-box;
+}
+
+.jpview.combobox.dropbox.listview.tile.col2 > * {
+	width: calc(50% - 10px);
+}
+
+.jpview.combobox.dropbox.listview.tile.col3 > * {
+	width: calc(33.3% - 10px);
+}
+
+.jpview.combobox.dropbox.listview.tile.col4 > * {
+	width: calc(25% - 10px);
+}
+
+
+.jpview.combobox.dropbox.listview .item:hover {
+	background-color: var(--list-hover-background-color) !important;
+	color: black;
+	border-radius: 14.5px;	
+	box-sizing: border-box;
+}
+
+.jpview.combobox.dropbox.listview .item.selected {
+	background-color: var(--list-selected-background-color);
+	color: black;
+	border-radius: 14.5px;	
+	box-sizing: border-box;
+}
+
+.jpview.combobox[data-attr-type=calendar] {
+	width: 70px;
+}
+
+.jpview.listview.combobox.dropbox > .item {
+	display: block;	
+}
+
+/* directly append option views  */
+.jpview.listview.combobox.dropbox > .item {
+	border: 0px solid transparent;
+	padding: 8px;
+	box-sizing: border-box;
+}
+
+.jpview.listview.combobox.dropbox {
+	background-color: white;
+	display: flex;
+	align-items: center;
+}
+
+.jpview.listview.combobox.dropbox.detail {
+	flex-direction: column;
+}
+
+.jpview.listview.combobox.dropbox.tile {
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+
+.jpview.listview .item .jpview.combobox.opened {
+	border: 0px solid transparent !important;	
+	background-color: transparent !important;
+}
+
+.jpview.listview .item .jpview.combobox {
+	border: 0px solid transparent !important;	
+	background-color: transparent !important;
+}
+
+.jpview.listview .item .jpview.combobox > input {
+	vertical-align: middle;
+	padding: 0px;
+}
+
+.jpview.listview .item .jpview.combobox.cal > .arrow {
+	display: none;
+}
+
+.jpview.listview.editable [data-key] {
+	min-height: 20px;
+}
+
+.jpview.listview .item.hidden {
+	display: none;
+}
+
+/***************************************************************************
+ * Slideshow
+***************************************************************************/
+.jpview.slideshow {
+	overflow: hidden;
+}
+
+.jpview.slideshow > .container {
+	position: relative;
+	height: 100%;
+	width: 100%;
+}
+
+.jpview.slideshow > .container > .item {
+	position: absolute;	
+	width: 100%;
+	height: 100%;
+}
+
+/***************************************************************************
+ * Button
+***************************************************************************/
+
+.jpview.button {
+	display: inline-flex;
+	justify-content: center;
+	align-self: center;
+	height: 36px;
+	cursor: pointer;
+	background: #0a2948;
+	box-sizing: border-box;
+	letter-spacing: -0.7px;
+	text-align: center;
+	align-items: center;
+	justify-items: center;
+	padding: 0px 10px;
+	border-radius: 18px;
+	
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	-ms-user-select: none;
+	
+	transition: ease-out 0.2s transform;
+	
+/*
+	border: 1px solid lightgray;
+	border-radius: 5px;
+	background: #7d7e7d; 
+	background: -moz-linear-gradient(top, #7d7e7d 0%, #0e0e0e 100%); 
+	background: -webkit-linear-gradient(top, #7d7e7d 0%,#0e0e0e 100%); 
+	background: linear-gradient(to bottom, #7d7e7d 0%,#0e0e0e 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=0 ); 
+*/
+	color: white;
+}
+
+a.jpview.button {
+	text-decoration: none;
+}
+
+.jpview.button .title {
+	font-size: inherit;
+}
+
+.jpview.button.negative {
+	background: #e7425c;
+}
+
+.jpview.button.hover,
+.jpview.button:hover {
+/*
+	background: rgb(205,235,142); 
+	background: -moz-linear-gradient(top, rgba(205,235,142,1) 0%, rgba(165,201,86,1) 100%); 
+	background: -webkit-linear-gradient(top, rgba(205,235,142,1) 0%,rgba(165,201,86,1) 100%); 
+	background: linear-gradient(to bottom, rgba(205,235,142,1) 0%,rgba(165,201,86,1) 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cdeb8e', endColorstr='#a5c956',GradientType=0 ); 
+	color: yellow;
+*/
+}
+
+.jpview.button.disabled.hover,
+.jpview.button.disabled:hover  {
+
+}
+
+.jpview.button:active {
+	transform: scale(1.15, 1.15);
+}
+
+
+.jpview.button.disabled:active {
+	transform: scale(1, 1);
+}
+
+/*
+.jpview.button.selected,
+.jpview.button:active {
+	background-color: lightgreen;
+}
+*/
+
+.jpview.button.disabled {
+	color: gray;
+	background-color: lightgray !important;
+	cursor: default;
+}
+
+/*
+.jpview.button:not(.disabled):active {
+	background-color: #fff360;
+}
+*/
+
+.jpview.button.horizontal > * {
+	vertical-align: middle;	
+}
+
+.jpview.button.horizontal > .title {
+	padding-left: 5px;
+	padding-right: 5px
+}
+
+.jpview.button.horizontal > .icon {
+	padding-left: 5px;
+}
+
+.jpview.button.horizontal > .icon > * {
+	display: block;
+	vertical-align: middle;
+}
+
+.jpview.button.vertical > * {
+	text-align: center;
+	vertical-align: middle;
+}
+
+.jpview.button.vertical {
+	flex-flow: column;
+	line-height: 1.5em;
+	padding: 10px;
+}
+
+.jpview.button > .badge {
+	position: absolute;
+	top: -10px;
+	right: -10px;
+	border-radius: 10px;
+	padding: 3px;
+	background-color: darkred;
+	color: white;
+	font-weight: bold;
+	min-width: 18px;
+}
+
+/***************************************************************************
+ * Radio
+***************************************************************************/
+.jpview.button.radio {
+	display: inline-flex;
+	border: 0px solid transparent;
+	color: #111111;
+	cursor: pointer;
+	background: transparent;
+	line-height: normal;
+	height:initial;
+	padding: 5px;
+}
+
+.jpview.button.radio > * {
+	align-items: center;
+}
+
+.jpview.button.radio.hover,
+.jpview.button.radio:hover {
+	background-color: transparent;
+}
+
+.jpview.button.radio.disabled {
+	color: rgb(121, 121, 121, 0.4);
+}
+
+.jpview.button.radio .icon {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	border: 1px solid #707070;
+	grid-column: 1;
+	grid-row: 1;
+	position: relative;
+	
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	-ms-user-select: none;
+	
+}
+
+.jpview.button.radio.disabled .icon {
+	border-color: rgb(121, 121, 121, 0.4);
+}
+
+.jpview.button.radio.selected .icon {
+	border-color: #111111;
+}
+
+.jpview.button.radio.selected .icon .dot {
+	left: 0; right: 0; top: 0; bottom: 0;
+	width: 70%;
+	height: 70%;
+	background-color: #111111;
+	border-radius: 50%;
+	position: absolute;
+	margin: auto;
+}
+
+.jpview.button.radio .title{
+	display: flex;
+	color: inherit;
+	padding-left: 10px;
+	grid-column: 2;
+	grid-row: 1;
+}
+
+.jpview.button.radio.selected {
+	background-color: transparent;
+}
+
+.jpview.button.toggle.selected {
+	background-color: #A5D3D0;
+    color: white;
+}
+
+/***************************************************************************
+ * Checkbox
+***************************************************************************/
+.jpview.button.checkbox {
+	display: inline-flex;
+	border: 0px solid transparent;
+	color: #393f48;
+	cursor: pointer;
+	box-sizing: border-box;
+	background: transparent;
+	padding: 5px;
+}
+
+.jpview.button.checkbox.hover,
+.jpview.button.checkbox:hover {
+	background-color: transparent;
+}
+
+.jpview.button.checkbox.disabled
+{
+	cursor: default;
+}
+
+.jpview.button.checkbox.disabled .icon {
+	border: 1px solid rgba(0,0,0,0.1);
+	background-color: rgba(0,0,0,0.1);
+}
+
+.jpview.button.checkbox .icon {
+	display: inline-block;
+	border-radius: 5px;
+	min-width: 20px;
+	min-height: 20px;
+	border: 1px solid #7b7b7b;
+	vertical-align: middle;
+	background-color: white;
+	
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	-ms-user-select: none;
+}
+
+.jpview.button.checkbox.selected .icon,
+.jpview.button.checkbox.checked .icon {
+	background-image: url('images/img_check.png');
+	background-size: 20px 20px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: #222d49;
+}
+
+.jpview.button.checkbox.halfchecked .icon {
+	background-image: url('images/img_halfcheck.png');
+	background-size: 12px 12px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: #222d49;	
+}
+
+.jpview.button.checkbox .title {
+	display: inline-block;
+	color: inherit;
+	padding-left: 10px;
+	vertical-align: middle;
+}
+
+.jpview.button.checkbox.hover {
+	background-color: transparent;
+}
+
+.jpview.button.checkbox.toggle.selected,
+.jpview.button.checkbox.selected {
+	background-color: transparent;
+	color: #393f48;
+}
+
+
+/***************************************************************************
+ * Calendar
+***************************************************************************/
+.jpview.calendar {
+	display: inline-table;
+	border: 3px solid gray;
+	font-family: inherit;
+}
+
+.jpview.calendar > div {
+	display: table-row;
+	width: 100%;
+	min-width: 230px;
+	min-height: 200px;
+	font-family: inherit;
+}
+
+.jpview.calendar > .calheader {
+	display: table;
+	width: 100%;
+	background-color: white;;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	color: black;
+	font-family: inherit;
+	box-sizing: border-box;
+	user-select: none;
+}
+
+.jpview.calendar > .calheader > * {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.jpview.calendar > .calheader > .before {
+	width: 32px;
+	padding-left: 10px;
+	font-family: arial;
+}
+
+.jpview.calendar > .calheader > .before.disabled {
+	color: lightgray;
+}
+
+.jpview.calendar > .calheader > .next {
+	width: 32px;
+	text-align: right;
+	padding-right: 10px;
+	font-family: arial;
+}
+
+.jpview.calendar > .calheader > .before:hover
+,.jpview.calendar > .calheader > .next:hover {
+	cursor: pointer;
+}
+
+.jpview.calendar > .calheader > .next.disabled {
+	color: #7b7b7b;
+}
+
+.jpview.calendar > .calheader > .title {
+	text-align: center;
+	font-weight: bold;
+	padding: 5px;	
+}
+
+
+.jpview.calendar > .calheader > .title:hover {
+	background-color: #f5f5f5;
+	border-radius: 30px;	
+}
+
+.jpview.calendar > div.calbody {
+	width: initial;
+	display: block;
+	height: initial;
+	background-color: white;
+}
+
+
+.jpview.calendar > div.calbody.slideshow > .container {
+	min-height: 230px;
+}
+
+.jpview.calendar > div.calbody.simple,
+.jpview.calendar > div.calbody.slideshow > .container > .item {
+	display: table;		
+	table-layout: fixed;
+	box-sizing: border-box;
+	background-color: white;
+	border-collapse: collapse;
+	height: 100%;
+}
+
+.jpview.calendar > div.calbody.simple > .row,
+.jpview.calendar > div.calbody.slideshow > .container > .item .row {
+	display: table-row;
+}
+
+.jpview.calendar > div.calbody.simple > .row > .col,
+.jpview.calendar > div.calbody.slideshow > .container > .item .row > .col {
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+	border: 1px solid transparent;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;	
+
+}
+
+.jpview.calendar > div.calbody.simple > .row > .col.date,
+.jpview.calendar > div.calbody.slideshow > .container > .item .row > .col.date {
+	text-align: center;
+}
+
+
+
+
+.jpview.calendar > div.calbody.simple > .row > .col:hover .title,
+.jpview.calendar > div.calbody.slideshow .item .row > .col:hover .title {
+	color: black;
+	background-color: #dfdfdf;
+	border-radius: 50%;;
+}
+
+.jpview.calendar > div.calbody.simple > .row > .col > *,
+.jpview.calendar > div.calbody.slideshow .item .row > .col > * {
+	padding: 5px;
+}
+
+.jpview.calendar > div.calbody.simple > .row > .col.selected .title,
+.jpview.calendar > div.calbody.slideshow .item .row > .col.selected .title {
+	background-color: #222d49;
+	border-radius: 50%;
+	color: white;
+}
+
+.jpview.calendar > div.calbody.simple > .row > .col.disabled .title,
+.jpview.calendar > div.calbody.slideshow .item .row > .col.disabled .title {
+	color: #efefef;
+}
+
+.jpview.calendar > div.calbody.simple > .row > .col.not,
+.jpview.calendar > div.calbody.slideshow .item .row > .col.not {
+	color: lightgray;
+}
+
+.jpview.calendar > div.calbody.simple > .row > .col.sunday,
+.jpview.calendar > div.calbody.simple > .header > .hcol.sunday,
+.jpview.calendar > div.calbody.slideshow .item .row > .col.sunday,
+.jpview.calendar > div.calbody.slideshow .item .header > .hcol.sunday
+{
+	color: #E52D3B;
+}
+
+.jpview.calendar > div.calbody.simple > .row > .col.saturday,
+.jpview.calendar > div.calbody.simple > .header > .hcol.saturday,
+.jpview.calendar > div.calbody.slideshow .item .row > .col.saturday,
+.jpview.calendar > div.calbody.slideshow .item .header > .hcol.saturday
+{
+	color: #2B5AA7;
+}
+
+.jpview.calendar > div.calbody.simple > .row > .col.now > *,
+.jpview.calendar > div.calbody.slideshow .item .row > .col.now > * {
+	color: black;
+	font-weight: bold;
+	background-color: #a8d3d0;
+	border-radius: 50%;
+}
+
+.jpview.calendar > div.calbody.simple > .header,
+.jpview.calendar > div.calbody.slideshow .item > .header {
+	display: table-row;
+	background-color: #f5f5f5;
+	height: 20px;	
+}
+
+.jpview.calendar > div.calbody.simple > .header > .hcol,
+.jpview.calendar > div.calbody.slideshow .item > .header > .hcol {
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.jpview.calendar > div.calbody.simple > .row.quarter,
+.jpview.calendar > div.calbody.slideshow .item > .row.quarter {
+	height: 25%;
+}
+
+.jpview.calendar > div.time.container > .jpview.time {
+	margin: 0px auto;
+}
+
+/***************************************************************************
+ * Switch
+***************************************************************************/
+.jpview.switch {
+	display: inline-block;
+	position: relative;
+	border: 1px solid lightgray;
+	border-radius: 30px;
+	width: 50px;
+	height: 24px;
+	background-color: white;
+	cursor: pointer;
+}
+
+.jpview.switch .knob {
+	position: absolute;
+	border: 1px solid lightgray;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background-color: white;
+	margin: auto 0;
+	bottom: 0;
+	top: 0;
+}
+
+.jpview.switch.selected {
+	background-color: #f9ce23;
+}
+
+.jpview.switch.selected .knob {
+	border: 1px solid transparent;
+}
+
+/***************************************************************************
+ * Dialog
+***************************************************************************/
+.jpview.screenblock {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.7);
+	user-select: none;
+}
+
+.jpview.modalblock {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 100;
+	background: rgba(0,0,0,0.7);
+}
+
+.jpview.dialog {
+	position: fixed;	
+	display: none;
+	border: 0px solid rgba(0,0,0,0.6);
+	z-index: 100;
+	border-radius: 17px;
+	box-shadow: 0px 0px 30px rgba(0,0,0,0.5);
+	background: white;
+	transition: 0.4s ease-out transform;
+	transform: translateY(-100vh); 
+}
+
+.jpview.dialog.appear {
+	transform: translateY(0px);
+}
+
+.jpview.dialog.noborder {
+	border-width: 0px;
+	border-radius: 0px;
+}
+
+.jpview.dialog > .header,
+.jpview.dialog > * > .header{
+	height: 68px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	border-bottom: 1px solid #e2e2e2;
+	
+}
+
+.jpview.dialog > .header .title,
+.jpview.dialog > * > .header .title {
+	padding: 0px 46px;
+	color: #0a2948;
+	font-size: 21px;
+	letter-spacing: -0.5px;	
+	font-weight: bold;
+}
+
+.jpview.dialog > .header .close,
+.jpview.dialog > * > .header .close {
+	width: 48px;
+	height: 48px;
+	background-image: url(images/btn_dialog_close.png);
+	background-size: 24px 24px;
+	background-position: center;
+	background-repeat: no-repeat;
+	font-size: 24px;
+	line-height: 68px;
+	text-align: center;
+	border-top-right-radius: 10px;
+	padding-right: 26px;
+}
+
+.jpview.dialog > .footer,
+.jpview.dialog > * > .footer {
+	padding: 5px;	
+	border-top: 1px solid lightgray;
+	height: 46px;
+}
+
+.jpview.dialog > .footer > * ,
+.jpview.dialog > * > .footer > * {
+	margin: 5px;
+}
+
+/***************************************************************************
+ * Alert
+***************************************************************************/
+
+.jpview.dialog.alert {
+	min-width: 150px;
+}
+
+.jpview.dialog.alert > .body {
+	padding: 10px;
+	margin: 20px;
+}
+
+.jpview.dialog > .footer,
+.jpview.dialog > * > .footer {
+	text-align: center;	
+}
+
+.jpview.dialog > .footer .button,
+.jpview.dialog > * > .footer .button {
+	width: 100px;
+}
+
+/***************************************************************************
+ * Chart
+***************************************************************************/
+.jpview.chart {
+	position: relative;
+}
+
+.jpview.chart > * {
+	position: absolute;
+}
+
+.jpview.chart > .axis > * {
+	position: absolute;
+}
+
+.jpview.chart > .title {
+	position: relative;
+	width: 100%;
+	text-align: center;
+	font-size: 12pt;
+	font-weight: bold;
+	padding: 5px;
+}
+
+.jpview.chart > .legend {
+	position: absolute;
+	border: 1px solid lightgray;
+}
+
+.jpview.chart .legend .item {
+	display: table;
+	width: 100%;
+	height: 5px;
+	padding: 5px;
+}
+
+.jpview.chart .legend .item.hidden {
+	color: lightgray;
+}
+
+.jpview.chart .legend .item .color {
+	display: table-cell;
+	width: 10px;
+	height: 5px;
+}
+
+.jpview.chart .legend .item .label {
+	margin-left: 5px;
+	font-size: 11px;
+}
+
+/***************************************************************************
+ * Tooltip
+***************************************************************************/
+.jpview.tooltip {
+	position: absolute;
+	left: 0px;
+	top: 0px;	
+	display: none;
+	padding: 5px 10px;
+	border-radius: 5px;
+	border: 1px solid lightgray;
+	background-color: #fff360;
+	box-shadow: 5px 5px 10px lightgray;
+}
+
+/***************************************************************************
+ * Scroll
+***************************************************************************/
+.jpview.scroll {
+	overflow: hidden;
+}
+
+.jpview.scroll .scrollbar {
+	position: absolute;
+	background-color: transparent;
+}
+
+.jpview.scroll .scrollbar.horizontal {
+	height: 5px;
+	bottom: 5px;
+	clear: both;
+	left: 0px;
+	right: 0px;
+}
+
+.jpview.scroll .scrollbar.vertical {
+	width: 5px;
+	float: right;
+	right: 5px;
+	clear: both;
+	top: 0px;
+	bottom: 0px;
+}
+
+.jpview.scroll .scrollbar .indicator {
+	position: absolute;
+	border-radius: 50px;
+	background-color: rgba(0,0,0,0.5);
+}
+
+.jpview.scroll .scrollbar.horizontal .indicator {
+	height: 100%;
+}
+ 
+.jpview.scroll .scrollbar.vertical .indicator {
+	width: 100%;
+}
+
+/***************************************************************************
+ * ColorPicker
+***************************************************************************/
+
+.jpview.colorpicker {
+	user-select: none;	
+	-webkit-user-select: none;
+	-moz-user-select: none;	
+	-ms-user-select: none;
+	-o-user-select: none;
+	position: relative;
+}
+
+.jpview.colorpicker > * {
+	display: inline-block;
+	position: relative;
+}
+
+.jpview.colorpicker .indicator {
+	position: absolute;
+}
+
+.jpview.colorpicker .alphaPanel {
+	width: 100%;
+	height: 20px;
+	background-color: white;
+}
+
+.jpview.colorpicker .alphaPanel .track {
+	border: 1px solid lightgray;
+	height: 15px;
+}
+
+
+.jpview.colorpicker .alphaPanel .value {
+	width: 20px;
+	height: 15px;
+	position: absolute;
+	top: 0;
+	right: 5px;
+	text-align: center;
+}
+
+.jpview.colorpicker .alpha.indicator {
+	width: 2px;
+	height: 15px;
+	top: 0;
+	background: black;
+}
+
+.jpview.colorpicker > .hsvPanel {
+	cursor: crosshair;
+}
+
+
+.jpview.colorpicker > .hsvPanel > .gradient {
+	background-image: url("images/colorpicker_bg.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	width: 100%;
+	height: 100%;
+}
+
+.jpview.colorpicker > .huePanel {
+	background-image: url('images/hue_bg.png' );
+	background-repeat: no-repeat;
+	background-size: 30px 100%;
+	width: 30px;
+	height: 100%;
+}
+
+.jpview.colorpicker .hsv.indicator {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;	
+	border: 1px solid lightgray;
+}
+
+.jpview.colorpicker .hue.indicator {
+	left: 0;
+	top: 0;
+	width: 30px;
+	height: 4px;
+	position: absolute;
+	background-color: #202020;
+}
+
+/***************************************************************************
+ * PagingScroll
+***************************************************************************/
+
+.jpview.pagingscroll {
+	display: block;
+}
+
+.jpview.pagingscroll > * {
+	display: inline-block;
+	vertical-align: middle;	
+}
+
+.jpview.pagingscroll > .container {
+	overflow: hidden;
+	position: relative;
+	white-space: nowrap;
+}
+
+.jpview.pagingscroll > .container > * {
+	overflow: hidden;
+	white-space: nowrap;
+	float: left;
+}
+
+
+/***************************************************************************
+ * Listview
+***************************************************************************/
+
+.jpview.listview .header .sortable {
+	cursor: pointer;	
+	background-color: lightgreen;
+}
+
+/*
+.jpview.listview.detail > *.:first-child {
+	border: 1px solid lightgray;
+}
+*/
+
+.jpview.listview.detail div.header {
+	display: table-header-group;
+}
+
+.jpview.listview.detail div.header > * {	
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.jpview.listview.detail .header .checkbox {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.jpview.listview.detail .checkbox input[type=checkbox] {
+	outline: 0px;
+	appearance: none;
+	-webkit-appearance: none;
+	color: transparent;
+}
+
+.jpview.listview.detail .checkbox input[type=checkbox]:before {
+	position: relative;
+	display: block;
+	width: 20px;
+	height: 20px;
+	border: 1px solid #e7425c;
+	border-radius: 50%;
+	color: transparent;
+	content: "\2714";
+	box-sizing: border-box;
+	line-height: 20px;
+	text-align: center;
+}
+
+.jpview.listview.detail.blue .checkbox input[type=checkbox]:before {
+	border-color: #174880;		
+}
+
+.jpview.listview.detail .checkbox input[type=checkbox]:checked:before {
+	position: relative;
+	display: block;
+	width: 20px;
+	height: 20px;
+	border: 1px solid #e7425c;
+	border-radius: 50%;
+	background-color: #e7425c;
+	color: white;
+	content: "\2714";
+	line-height: 20px;
+	text-align: center;
+	box-sizing: border-box;
+}
+
+.jpview.listview.detail.blue .checkbox input[type=checkbox]:checked:before {
+	color: white;
+	background-color: #174880;
+	border-color: #174880;		
+}
+
+.jpview.listview .header > .sort.ascend:after {
+	content: '�뼯';
+	padding-left: 10px;
+	padding-right: 5px;
+	float: right;
+	font-family: arial;
+}
+
+.jpview.listview .header > .sort.descend:after {
+	content: '�뼹 ';
+	padding-left: 10px;
+	float: right;
+	padding-right: 5px;
+	font-family: arial;
+}
+
+.jpview.listview.detail > * {
+	width: 100%;
+}
+
+.jpview.listview .item:hover {
+	background-color: var(--list-hover-background-color) !important;
+}
+
+.jpview.listview .item:active {
+	background-color: var(--list-active-background-color);
+}
+
+.jpview.listview .item.selected {
+	background-color: var(--list-selected-background-color);
+}
+
+.jpview.listview.detail div.row > * {
+	display: table-cell;
+	box-sizing: border-box; 
+}
+
+.jpview.listview.detail .item .checkbox{
+	width: 24px;	
+}
+
+.jpview.listview.detail div.row > .dirty {
+	background-color: lightgreen;
+}
+
+
+.jpview.listview.detail .separator {
+	position: absolute;
+	width: 1px;
+	background-color: lightgray;
+	top: 0px;
+	cursor: ew-resize;
+}
+
+.jpview.listview.detail .separator:hover {
+	width: 2px;
+	cursor: ew-resize;
+	background-color: lightgray;
+}
+
+.jpview.listview.detail .row.item > * {
+	text-overflow: ellipsis;	
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+
+.jpview.listview.detail div.row.item {
+	border-bottom: 1px solid #e6e6e6;
+}
+
+.jpview.listview.detail .row.item > td {
+	border-bottom: 1px solid lightgray;
+}
+
+.jpview.listview.detail .row.item .edit{
+	background-color: pink;	
+}
+
+.jpview.listview.detail.editable .jpview.textfield {
+	border-radius: 0px;	
+	height: 100%;
+	border: 0px solid transparent;
+	background-color: transparent;
+	width: 100%;
+}
+
+.jpview.listview.detail.editable .jpview.textfield input {
+	padding: 0px 0px;
+}
+
+.jpview.listview.detail .jpview.checkbox {
+	text-align: center;
+}
+
+.jpview.listview.detail .jpview.checkbox .icon {
+	width: 14px;	
+	height: 14px;
+	display: inline-block;
+}
+
+.jpview.listview.detail.editable div.row .edit {
+	padding-top: 0px !important;
+	padding-bottom: 0px !important;
+}
+
+.jpview.listview.detail.editable > div:first-child {
+	table-layout: fixed; 
+}
+
+.jpview.listview.detail .header > div .sort.ascend:after {
+	content: '▲';
+	padding-left: 10px;
+	padding-right: 5px;
+	float: right;
+	font-family: arial;
+}
+
+.jpview.listview.detail .header > div .sort.descend:after {
+	content: '▼';
+	padding-left: 10px;
+	float: right;
+	padding-right: 5px;
+	font-family: arial;
+}
+
+.jpview.listview.tile > div.box {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.jpview.listview.tile .item {
+	display: inline-block;
+	vertical-align: top;
+}
+
+
+.jpview.listview .item .jpview.checkbox {
+	width: 32px;
+	height: 32px;
+}
+
+
+
+
+/***************************************************************************
+ * PageControl
+***************************************************************************/
+
+
+.jpview.pagectrl {
+	width: 100%;
+	display: none;
+	margin: 0 auto;
+}
+
+.jpview.pagectrl {
+	font-size: 10pt;
+}
+
+.jpview.pagectrl > * {
+	min-height: 36px;
+	margin: 0 auto;
+}
+
+.jpview.pagectrl .page {
+	min-width: 20px;
+	text-align: center;
+}
+
+.jpview.pagectrl .page.number {
+	cursor: pointer;
+	font-size: 10pt;
+	padding: 2px;
+	color: #b5b5b5;
+}
+
+.jpview.pagectrl .page.number:hover {
+	color: #222d49;
+}
+
+.jpview.pagectrl .page.number.selected {
+	color: #222d49;
+	font-weight: bold;
+}
+
+.jpview.pagectrl .page.number.first {
+	padding-left: 24px;
+}
+
+.jpview.pagectrl .page.number.last {
+	padding-right: 24px;
+}
+
+
+.jpview.pagectrl .page.image {
+	cursor: pointer;
+	width: 24px;
+	background-size: 24px 24px;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.jpview.pagectrl .page.dot {
+	width: 20px;
+	height: 20px;
+	margin: 1px;
+	border-radius: 50%;
+	border: 1px solid lightgray;
+	background: rgb(255,255,255); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(229,229,229,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(229,229,229,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* W3C */
+}
+
+.jpview.pagectrl .page.dot:hover {
+	cursor: pointer;
+}
+
+.jpview.pagectrl .page.dot.selected {
+	background: rgb(241,231,103); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(241,231,103,1) 0%, rgba(254,182,69,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(241,231,103,1)), color-stop(100%,rgba(254,182,69,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(241,231,103,1) 0%,rgba(254,182,69,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(241,231,103,1) 0%,rgba(254,182,69,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(241,231,103,1) 0%,rgba(254,182,69,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(241,231,103,1) 0%,rgba(254,182,69,1) 100%); /* W3C */
+}
+	
+.jpview.pagectrl .page.disabled {
+	cursor: default;
+	opacity: 0.4;
+}
+
+.jpview.pagectrl .page.previousGroup {
+	background-image: url(images/pagectrl_btn_prevgroup.png)
+}
+
+.jpview.pagectrl .page.previous {
+	background-image: url(images/pagectrl_btn_prev.png)
+}
+
+.jpview.pagectrl .page.next {
+	background-image: url(images/pagectrl_btn_next.png)
+}
+
+.jpview.pagectrl .page.nextGroup {
+	background-image: url(images/pagectrl_btn_nextgroup.png)
+}
+
+/***************************************************************************
+ * TableView
+***************************************************************************/
+.jpview.table .container > .group {
+	position: relative;
+}
+
+.jpview.table .container > .group > .header {
+	background: lightgray;		
+	position: relative;
+}
+
+.jpview.table .container > .group > * {
+	padding: 5px;
+}
+
+.jpview.table .container > .group > .item:hover,
+.jpview.table .container > .item:hover {
+	background-color: #fff360;	
+}
+
+/***************************************************************************
+ * Flip
+***************************************************************************/
+.jpview.flip {
+	position: relative;
+	perspective: 1000;
+	transform-origin: 50% 50% 0px;
+	transform-style: preserve-3d;
+}
+
+.jpview.flip .front, 
+.jpview.flip .back {
+	position: absolute;
+	top: 0;
+	left: 0;
+	backface-visibility: hidden;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.jpview.flip .front {
+	transform: rotateY(0deg);
+}
+
+.jpview.flip .back {
+	transform: rotateY(180deg);
+}
+
+/***************************************************************************
+ * FullPage
+***************************************************************************/
+.jpview.fullpage.container,
+.jpview.fullpage .container
+{
+	position: absolute;
+	height: 100%;
+	transition: transform 1000ms ease;
+	touch-action: none;
+	-ms-touch-action: none;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	box-sizing: border-box;
+}
+
+.jpview.fullpage {
+	position: relative;
+	height: 100%;
+	width: 100%;
+}
+
+
+.jpview.fullpage .page {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+}
+
+.jpview.fullpage .page > * {
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+}
+
+/*
+.jpview.loading {
+	position: fixed;
+	left: 0px;
+	right: 0px;	
+	top: 0px;
+	bottom: 0px;
+	margin: auto;	
+	width: 92px;
+	height: 92px;
+	
+	background-image: url('images/loading.gif');
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	
+	z-index: 100000;
+}
+*/
+
+/***************************************************************************
+ * JPGrid
+***************************************************************************/
+.jpview.gridview {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}	
+
+.jpview.gridview > .cell {
+	position: absolute;	
+	height: 100%;
+}
+
+.jpview.gridview > .separator {
+	position: absolute;
+	background-color: lightgray;
+}
+
+.jpview.gridview > .separator.horizontal {
+	height: 2px;
+	cursor: ns-resize;
+}
+
+.jpview.gridview > .separator.vertical {
+	width: 2px;
+	cursor: ew-resize;
+}
+
+/***************************************************************************
+ * JPSpin
+***************************************************************************/
+
+.jpview.spin .buttons > .disabled {
+	color: #a1a3a5;
+}
+
+.jpview.spin {
+	display: inline-flex;
+	height: auto;
+	border: 1px solid rgb(146, 155, 167);
+	background-color: white;
+	color: #393f48;
+	border-radius: 5px;
+	box-sizing: border-box;
+	align-items: center;
+}
+
+.jpview.spin > * {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.jpview.spin input {
+	text-align: center;
+	outline: none;
+	border: 0px solid transparent; 
+	background-color: transparent;
+	padding: 0px 5px;
+	height: 100%;
+	font-size: 16px;
+}
+
+.jpview.spin > .buttons {
+	grid-column: 2;
+	text-align: center;
+	background: #60adfb;
+	font-size:12px;
+}
+	
+.jpview.spin > .buttons > * {
+	background: #60adfb;
+	color: white;
+	vertical-align: middle;
+	font-size:12px;
+	user-select: none;
+}
+
+.jpview.spin > .buttons > *:first-child {
+}
+
+.jpview.spin > .buttons > *:hover {
+	color: yellow;
+}
+
+.jpview.time {
+	display: flex;
+	align-items: center;
+}
+
+.jpview.time > * {
+	display: inline-block;
+}
+
+.jpview.listview  .jpview.time > .separator {
+	position: relative !important;
+	padding: 0px 2px;
+	background-color: transparent !important;
+}
+
+.jpview.time > .separator {
+	position: inherit;
+	padding: 0px 2px;
+	background-color: transparent !important;
+}
+
+/***************************************************************************
+ * JPResize
+***************************************************************************/
+.jpview.resize {
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	background: #3B8EC4;
+	border-radius: 50%;
+	border: 1px solid green;
+}
+
+/***************************************************************************
+ * JPNavigatorController
+***************************************************************************/
+.jpview.navigator {
+	position: relative;
+}
+
+.jpview.navigator > .viewcontroller {
+}
+
+/***************************************************************************
+ * JPTimetable
+***************************************************************************/
+
+.jpview.timetable  {
+	width: 300px;
+	position: relative;
+	padding: 5px;
+	overflow: hidden;
+}
+
+
+.jpview.timetable > .now {
+	position: absolute;
+	display: none;
+	left: 50px;
+	background-color: darkred;
+	height: 2px;
+	width: 270px;
+	z-index: 101;
+}
+
+.jpview.timetable > .body {
+	display: table;
+	table-layout: fixed;
+	border-collapse: collapse;
+}
+
+.jpview.timetable > .body > * {
+	display: table-cell;
+	position: relative;
+	vertical-align: top;
+}
+
+.jpview.timetable > .body .ticks {
+	width: 50px;
+	height: 100%;
+}
+
+.jpview.timetable > .body .ticks > * {
+	position: absolute;
+	right: 5px;
+	margin: 0 auto;
+	font-size: 10px;
+}
+
+.jpview.timetable > .body .ticks > .hour {
+	font-weight: bold;
+}
+
+.jpview.timetable > .body .grid {
+	width: 250px;
+	height: 100%;
+	border: 1px solid rgba(0,0,0,0.2);
+}
+
+.jpview.timetable > .body .grid > * {
+	border-top: 1px solid rgba(0,0,0,0.2);
+	box-sizing: border-box;
+	margin: 0 auto;
+	background-color: white;
+}
+
+.jpview.timetable > .body .grid > .hour {
+	width: 100%;
+}
+
+.jpview.timetable > .body .grid > *:first-child {
+	border-width: 0px;
+}
+
+.jpview.timetable > .body .grid > .minute {
+	width: 80%;
+}
+
+.jpview.timetable > .body .grid > .minute.half {
+	width: 90%;
+}
+
+.jpview.timetable > .schedule {
+	position: absolute;		
+	left: 50px;
+	width: 250px;
+	top: 0;
+	box-sizing: border-box;
+}
+
+.jpview.timetable > .schedule > * {
+	position: absolute;
+	border-radius: 5px;
+	width: 250px;
+	box-sizing: border-box;
+	background: rgba(255,255,255,0.8);
+}
+
+.jpview.timetable > .schedule > * {
+	border: 2px solid royalblue;
+}
+
+.jpview.timetable > .schedule > *.selected {
+	border: 2px solid tomato;
+}
+
+
+/***************************************************************************
+ * FixedTab
+***************************************************************************/
+
+.jpview.fixedtab .tabbars {
+	margin: 0px;	
+	list-style-type: none;
+	padding: 0px;
+	display: inline-flex;
+	border-bottom: 1px solid #e2e2e2;
+}
+
+.jpview.fixedtab .tabbars .tabbar {
+	color: #acacac;
+	font-size: 16px;
+	padding: 10px 20px;
+	user-select: none;
+	border-bottom: 3px solid transparent;
+}
+
+.jpview.fixedtab .tabbars .tabbar.selected {
+	color: black;
+	font-weight: bold;
+	border-bottom: 3px solid #a8d3d0;	
+}
+
+.jpview.fixedtab .tabbody {
+	display: none;	
+}
+
+.jpview.fixedtab .tabbody.selected {
+	display: block;	
+}
+
+
+
+.jpview.imagebox {
+	position: relative;
+	text-align: center;
+}
+
+.jpview.imagebox > img {
+	position: absolute;
+	margin: auto;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.jpview.imagebox.hasImage:hover .button.clear {
+	display:block;
+}
+
+.jpview.imagebox .button.clear {
+	display: none;
+	position: absolute;
+	width: 42px;
+	height: 42px;
+	margin: auto;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	cursor: pointer;
+	border-radius: 50%;
+	background-color: white;
+	padding: 10px;
+}
+
+.jpview.imagebox .floating {
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	height: 36px;
+	text-align: center;
+}
+
+.jpview.imagebox .floating .button {
+	margin: 0px 10px;
+	width: 50px;	
+}
+
+.jpview.imagebox > .clip.container {
+	position: absolute;
+	margin: auto;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.jpview.imagebox > .clip.container > .rectangle {
+	position: absolute;
+	border: 1px solid darkred;
+	box-sizing: border-box;
+	background-color: rgba(0,0,0,0.5);
+}
+
