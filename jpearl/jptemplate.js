@@ -71,6 +71,9 @@ JPTemplate.prototype.apply = function(item,converter)
 		for ( var i = 0 ; i	< paths.length ; i++ )
 		{
 			obj = obj[paths[i]];
+			if ( obj === undefined ) {
+				break;
+			}
 		}
 		if ( conv && conv[k] )
 		{
