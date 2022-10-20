@@ -198,10 +198,9 @@ JPDialog.prototype._initialize = function()
 	}
 	this.children.header.bind('dragging', function(e, ptr,delta,position){
 		var off = self.element.offset();
-		self.element.css({
-			left: off.left + delta.x,
-			top: off.top + delta.y
-		});
+		off.left += delta.x;
+		off.top += delta.y;
+		self.element.offset(off);
 		return false;
 	}).bind('dragDone', function(e, ptr,delta,position){
 		return false;

@@ -197,7 +197,11 @@ JPFormBase.prototype._parseValue = function(key,value)
 {
 	var keyinfo = this._keyViews[key];
 	if ( !keyinfo ) return value; 
-	keyinfo = keyinfo.data('keyinfo');
+	if ( Array.isArray(keyinfo) ) {
+		keyinfo = keyinfo[0].data('keyinfo');
+	} else {
+		keyinfo = keyinfo.data('keyinfo');
+	}
 	if ( keyinfo && keyinfo.type ) {
 		switch ( keyinfo.type ) 
 		{
@@ -224,6 +228,24 @@ JPFormBase.prototype.setValue = function(key,value)
 {
 	this._setValue(key,this._parseValue(key,value));
 	var view = this.getViewForKey(key);
+	if ( Array.isArray(view) ) {
+		for ( var i = 0 ; i < view.length; i++ ) {
+			if ( view[i].data('value') == value ) {
+				switch( view[i].get(0).nodeName ) {
+					case 'INPUT':
+						view[i].prop('checked', true);
+						break;
+					default:
+						if ( view[i].instance() ) {
+							view[i].instance().checked(true);
+						}
+						break;
+				}
+				break;
+			}
+		}
+		return;
+	}
 	if ( view ) {
 		switch( view.get(0).nodeName )
 		{
@@ -259,17 +281,26 @@ JPFormBase.prototype.setValue = function(key,value)
 JPFormBase.prototype.enabled = function(value)
 {
 	if (value==false) {
-		for( var k in this._keyViews ) {
-			var view = this._keyViews[k];
-			switch( view.get(0).nodeName )
+		
+		var disabledFunc = function(v){
+			switch( v.get(0).nodeName )
 			{
 				case 'SELECT':
 				case 'TEXTAREA':
 				case 'INPUT':
-					view.prop('disabled', true);
+					v.prop('disabled', true);
 					break;
 				default:
-					view.instance().enabled(false);
+					v.instance().enabled(false);
+			}
+		}
+		
+		for( var k in this._keyViews ) {
+			var view = this._keyViews[k];
+			if ( Array.isArray(view) ) {
+				view.forEach(disabledFunc);
+			} else {
+				disabledFunc(view);
 			}
 		}
 	}
@@ -279,17 +310,23 @@ JPFormBase.prototype.enabled = function(value)
 JPFormBase.prototype.enabledForKey = function(key,value)
 {
 	var view = this.getViewForKey(key);
-	switch( view.get(0).nodeName )
-	{
-		case 'SELECT':
-		case 'TEXTAREA':
-		case 'INPUT':
-			view.prop('disabled', !value);
-			break;
-		default:
-			view.instance().enabled(value);
-            break;
-
+	var disabledFunc = function(v) {
+		switch( v.get(0).nodeName ) {
+			case 'SELECT':
+			case 'TEXTAREA':
+			case 'INPUT':
+				v.prop('disabled', !value);
+				break;
+			default:
+				v.instance().enabled(value);
+	            break;
+	
+		}
+	}
+	if ( Array.isArray(view) ) {
+		view.forEach( disabledFunc );
+	} else {
+		disabledFunc(view);
 	}
 }
 
@@ -382,6 +419,9 @@ JPFormBase.prototype.isValid = function(key)
 	var v = this.getViewForKey(key);
 	if ( v == undefined ) {
 		return true;	
+	}
+	if ( Array.isArray(v) ) {
+		return v.some( (k)=> k.hasClass('error') );
 	}
 	return v.hasClass('error');
 }
@@ -524,6 +564,9 @@ JPFormBase.prototype._dirtyCheck = function(path, obj)
 JPFormBase.prototype.isDirty = function(path)
 {
 	var v = this.getViewForKey(path);
+	if ( Array.isArray(v) ) {
+		return v.some( (k)=>k.hasClass('dirty') );
+	}
 	return v && v.hasClass('dirty');
 }
 
@@ -532,6 +575,9 @@ JPFormBase.prototype.focus = function(key)
 {
 	var v = this.getViewForKey(key);
 	if ( v ) {
+		if ( Array.isArray(v) ) {
+			v = v[0];	
+		} 
 		if ( v.instance() )  {
 			v.instance().focus();
 		} else {
@@ -598,7 +644,14 @@ JPForm.prototype._initialized = function()
 		}
 		var k = $(this).data('key');
 		var path = k.split(/\./);
-		self._keyViews[k] = $(this);
+		if ( self._keyViews[k] ) {
+			if ( !Array.isArray(self._keyViews[k]) ) {
+				self._keyViews[k] = [ self._keyViews[k] ];
+			}
+			self._keyViews[k].push($(this));
+		} else {
+			self._keyViews[k] = $(this);
+		}
 		self._keyErrorViews[k] = $('.error[data-link="%s"]'.sprintf(k), self.element);
 		if ( !self._keyErrorViews[k].length ) {
 			var msgView =  $(this).children('.message');
@@ -607,7 +660,8 @@ JPForm.prototype._initialized = function()
 			}
 		}		
 		var keyinfo = { path:path , view: $(this), type: $(this).data('type'), error: self._keyErrorViews[k] };
-		self._keyViews[k].data( {
+		
+		$(this).data( {
 			keypath: path,
 			keyinfo: keyinfo,
 		});
