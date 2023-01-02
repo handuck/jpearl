@@ -91,6 +91,12 @@ JPListview.prototype.destroy = function()
 	}
 }
 
+JPListview.prototype.rearrangeable = function(value)
+{
+	this.properties.rearrangeable = value;
+	this.properties.plugin.properties.rearrangeable = value;
+}
+
 JPListview.prototype.itemViewAt = function(idx)
 {
 	if ( typeof idx == 'number' )
@@ -229,7 +235,7 @@ JPListview.prototype._postAddItemView = function(obj,item)
 				p.empty().text(txt || '');
 			} 
 			self.editfield = undefined;
-//			self.element.trigger('itemValueChanged', [ item, value, p.data('keypath'), !p.hasClass('error')] );
+			self.element.trigger('itemValueChanged', [ item, value, p.data('keypath'), !p.hasClass('error')] );
 		}
 		obj.find('[data-key]').click(function(e){
 			var inst = $(this).instance();

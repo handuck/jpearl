@@ -440,6 +440,9 @@ JPFormBase.prototype.validate = function(callback)
 		}
 		if ( inst ) 
 		{
+			if ( inst.enabled() ) {
+				return;
+			}
 			v = inst.value();
 			if ( inst.properties.required )
 			{

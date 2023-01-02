@@ -682,7 +682,7 @@ JPCalendar.prototype._drawInYearMode = function(sDate,body)
 			var col = $('<div/>').addClass('col year item').data('date', dclone)
 				.appendTo(row);
 				
-			if ( this.properties.minDate.getFullYear() <= dclone.getFullYear && dclone.getFullYear() <= this.properties.maxDate.getFullYear() ) {
+			if ( this.properties.minDate.getFullYear() <= dclone.getFullYear() && dclone.getFullYear() <= this.properties.maxDate.getFullYear() ) {
 				col.mouseclick(dclone,clickEvent);
 			} else {
 				col.addClass('disabled');
@@ -743,7 +743,7 @@ JPCalendar.prototype._drawInYear10Mode = function(sDate,body)
 			var dclone = new Date(date.getFullYear(),1,1);
 			var col = $('<div/>').addClass('col year10 item').data('date', dclone).appendTo(row);
 				
-			if ( this.properties.minDate.getFullYear() <= dclone.getFullYear && dclone.getFullYear() + 10 <= this.properties.maxDate.getFullYear() ) {
+			if ( this.properties.minDate.getFullYear() <= dclone.getFullYear() && dclone.getFullYear() + 10 <= this.properties.maxDate.getFullYear() ) {
 				col.mouseclick(dclone,clickEvent);
 			} else {
 				col.addClass('disabled');
@@ -752,12 +752,9 @@ JPCalendar.prototype._drawInYear10Mode = function(sDate,body)
 			if (  isSelected ) {
 				this.children.items[y] = col;
 			}			
-			if ( this.properties.renderer )
-			{
-				col.append(this.properties.renderer( dclone, JPCalendar.Mode.Year ));
-			}
-			else
-			{
+			if ( this.properties.renderer ) {
+				col.append(this.properties.renderer( dclone, JPCalendar.Mode.Year10 ));
+			} else {
 				$('<div/>').html(y + '-<br>' + (y+9)).addClass('title').appendTo(col);
 			}
 			if ( y <= now.getFullYear() && now.getFullYear() < y+10  )

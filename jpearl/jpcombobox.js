@@ -179,7 +179,7 @@ function JPCombobox(element,props)
 			self.close();
 		}).bind('valueChange',function(e, value){
 			self.value(value);	
-		});
+		})
 	}
 	else if ( this.properties.type == 'color' )
 	{

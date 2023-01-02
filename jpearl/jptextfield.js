@@ -92,6 +92,10 @@ function JPTextfield(element,props)
 		this.element.addClass('readonly');
 	}
 	
+	this.children.input.mousedown(function(e){
+		e.stopPropagation();
+	});
+	
 	this.children.input.mouseup(function(e){
 		return false;
 	});
@@ -698,7 +702,7 @@ JPTextfield.prototype.blur = function(e)
 
 JPTextfield.prototype._filter = function(e)
 {
-	if ( e.which < 0x30 || e.metaKey || ( 112 <= e.which && e.which <= 123 ) ) return true;
+	if ( e.ctrlKey || e.which < 0x30 || e.metaKey || ( 112 <= e.which && e.which <= 123 ) ) return true;
 	switch( this.properties.type )
 	{
 		case 'integer':

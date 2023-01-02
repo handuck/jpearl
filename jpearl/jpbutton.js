@@ -40,6 +40,9 @@ function JPButton(element,props)
 		self.state( self.properties.state & ~JPButton.State.Highlighted );
 	});
 	
+	this.element.click(function(e){
+		self.element.blur();
+	});
 
 	if ( !this.properties.toggle )
 	{
@@ -258,6 +261,7 @@ JPButton.prototype.group = function(v)
 		}
 		this.element.unbind('click').click( function(e) {
 			e.stopPropagation();
+			self.element.blur();
 			if ( !self.properties.enabled ) {
 				return false;
 			}
