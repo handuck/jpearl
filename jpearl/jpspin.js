@@ -123,8 +123,9 @@ JPSpin.prototype._updateInputSize = function()
 			size += Math.abs(Math.floor(Math.log10( this.properties.step ))) + 1;	
 		}
 	}
-	
 	this.children.input.attr('size', size);
+	this.children.input.attr('maxlength', size);
+
 }
 
 JPSpin.prototype.property = function()

@@ -397,7 +397,14 @@ JPViewController.prototype.dialog = function(name,params)
 				return this;
 			},
 			title: function(value) {
-				this.instance.title(value);
+				if ( this.instance ) {
+					this.instance.title(value);
+				} else {
+					if ( !this.params ) {
+                        this.params = {};
+                    }
+					this.params.title = value;
+				}
 			}			
 		}
 	}
